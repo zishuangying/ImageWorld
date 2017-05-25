@@ -1,0 +1,41 @@
+%清除画布
+clf;
+%清除坐标轴
+cla;
+%关闭窗口
+close all;
+%清除所有原有变量
+clear all;
+%清除命令窗口的内容
+clc;
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%图像1
+Image1=imread('data/1.jpg');
+Image2=imread('data/2.jpg');
+%RGB->HSI,double->double
+Image10=rgb2hsi(Image1);
+Image20=rgb2hsi(Image2);
+%图像分量
+Image11=Image10(:,:,1);
+Image12=Image10(:,:,2);
+Image13=Image10(:,:,3);
+Image21=Image20(:,:,1);
+Image22=Image20(:,:,2);
+Image23=Image20(:,:,3);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%绘制图像
+figure(1);
+%修复图像比例
+axis normal;
+%标题字号
+FontSize=18;
+subplot(2,5,1);imshow(Image1);title('RGB','FontSize',FontSize);
+subplot(2,5,2);imshow(Image11);title('色调(Hue)','FontSize',FontSize);
+subplot(2,5,3);imshow(Image12);title('饱和度(Saturation)','FontSize',FontSize);
+subplot(2,5,4);imshow(Image13);title('光强(Intensity)','FontSize',FontSize);
+subplot(2,5,5);imshow(Image10);title('HSI','FontSize',FontSize);
+subplot(2,5,6);imshow(Image2);title('RGB','FontSize',FontSize);
+subplot(2,5,7);imshow(Image21);title('色调(Hue)','FontSize',FontSize);
+subplot(2,5,8);imshow(Image22);title('饱和度(Saturation)','FontSize',FontSize);
+subplot(2,5,9);imshow(Image23);title('光强(Intensity)','FontSize',FontSize);
+subplot(2,5,10);imshow(Image20);title('HSI','FontSize',FontSize);

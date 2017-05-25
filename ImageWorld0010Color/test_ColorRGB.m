@@ -1,0 +1,47 @@
+%清除画布
+clf;
+%清除坐标轴
+cla;
+%关闭窗口
+close all;
+%清除所有原有变量
+clear all;
+%清除命令窗口的内容
+clc;
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%图像1
+Image1=imread('data/1.jpg');
+Image2=imread('data/2.jpg');
+%RGB分量
+Image11=Image1(:,:,1);
+Image12=Image1(:,:,2);
+Image13=Image1(:,:,3);
+Image21=Image2(:,:,1);
+Image22=Image2(:,:,2);
+Image23=Image2(:,:,3);
+%补充分量
+Image1Z=zeros(size(Image11));
+Image1RGB=cat(3,Image11,Image12,Image13);
+Image11=cat(3,Image11,Image1Z,Image1Z);
+Image12=cat(3,Image1Z,Image12,Image1Z);
+Image13=cat(3,Image1Z,Image1Z,Image13);
+Image2Z=zeros(size(Image21));
+Image2RGB=cat(3,Image21,Image22,Image23);
+Image21=cat(3,Image21,Image2Z,Image2Z);
+Image22=cat(3,Image2Z,Image22,Image2Z);
+Image23=cat(3,Image2Z,Image2Z,Image23);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%绘制图像
+figure(1);
+%修复图像比例
+axis normal;
+%标题字号
+FontSize=18;
+subplot(2,4,1);imshow(Image11);title('红色(Red)','FontSize',FontSize);
+subplot(2,4,2);imshow(Image12);title('绿色(Green)','FontSize',FontSize);
+subplot(2,4,3);imshow(Image13);title('蓝色(Blue)','FontSize',FontSize);
+subplot(2,4,4);imshow(Image1RGB);title('RGB','FontSize',FontSize);
+subplot(2,4,5);imshow(Image21);title('红色(Red)','FontSize',FontSize);
+subplot(2,4,6);imshow(Image22);title('绿色(Green)','FontSize',FontSize);
+subplot(2,4,7);imshow(Image23);title('蓝色(Blue)','FontSize',FontSize);
+subplot(2,4,8);imshow(Image2RGB);title('RGB','FontSize',FontSize);
